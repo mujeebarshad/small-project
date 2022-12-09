@@ -45,7 +45,13 @@
                                 "modal-remote-trigger-id": "remote_modal",
                                 cy: "vessel-#{v.id}-edit"
                               } %>
-                  <%= remote_modal_link icon(:trash).html_safe, move_users_to_vessel_modal_manage_organization_settings_vessel_path(@organization, v), classes: "c-nav__item", data: { cy: "vessel-#{v.id}-remove" } %>
+                  <%= link_to icon(:trash).html_safe, manage_organization_settings_vessel_path(@organization, v),
+                              method: :delete,
+                              title: "Remove",
+                              data: {
+                                confirm: "Are you sure you want to remove #{v.name}?",
+                                cy: "vessel-#{v.id}-remove"
+                              }  %>
                 </td>
               </tr>
             <% end %>

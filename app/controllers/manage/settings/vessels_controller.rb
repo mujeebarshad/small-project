@@ -41,19 +41,12 @@ module Manage
         @vessel = scope.find(params[:id])
         authorize([:manage, :settings, @vessel])
 
-        destination_vessel = scope.find_by(id: params[:vessel_id]) if params[:vessel_id].present?
-        if @vessel.delete_vessel_and_move_users?(destination_vessel)
+        if @vessel.destroy
           redirect_back fallback_location: edit_manage_organization_settings_meta_data_path,
                         flash: { success: "Vessel removed!" }
         else
           render "edit", flash: { danger: "There were issues removing the vessel" }
         end
-      end
-
-      def move_users_to_vessel_modal
-        @vessel = scope.find(params[:id])
-        @vessels = scope.where.not(id: @vessel).collect { |vessel| [vessel.name, vessel.id] }
-        authorize([:manage, :settings, @vessel])
       end
 
       private

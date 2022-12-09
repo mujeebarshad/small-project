@@ -18,11 +18,7 @@ Rails.application.routes.draw do
       namespace :settings do
         resource :organization, only: %i[edit update]
         resource :meta_data, only: %i[edit]
-        resources :vessels, except: %i[index] do
-          member do
-            get "move_users_to_vessel_modal", to: "vessels#move_users_to_vessel_modal"
-          end
-        end
+        resources :vessels, except: %i[index]
       end
     end
   end

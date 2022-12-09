@@ -1,6 +1,0 @@
-<%= component "modal", title: t("labels.remove_vessel_label"), content_only: true do |c| %>
-  <% c.body do %>
-    <p class="modal__body"><%= t("descriptions.move_users_to_vessel_description").html_safe %></p>
-    <%= render partial: "manage/settings/vessels/shared/move_users_to_vessel_form", locals: { vessel: @vessel, vessels: @vessels, organization: @organization } %>
-  <% end %>
-<% end %>

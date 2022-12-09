@@ -23,9 +23,6 @@ module Manage
         true
       end
 
-      def move_users_to_vessel_modal?
-        true
-      end
     end
   end
 end

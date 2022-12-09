@@ -25,20 +25,4 @@ describe("Manage > Settings > Vessels", () => {
     cy.get("[data-cy=vessel-1]").contains("An updated vessel");
   });
 
-  it("remove_vessel_and_do_not_move users", () => {
-    cy.get("[data-cy=vessel-1-remove]").click();
-    cy.get("[data-cy=target-vessel-select]").select(0);
-    cy.get("[data-cy=vessel-submit]").click();
-    cy.get("[data-cy=vessel-1]").should("not.exist");
-    cy.get("[data-cy=vessel-2-view]").contains("View (0)");
-  });
-
-  it("remove_vessel_and_move users", () => {
-    cy.get("[data-cy=vessel-1-remove]").click();
-    cy.get("[data-cy=target-vessel-select]").select(1);
-    cy.get("[data-cy=vessel-submit]").click();
-    cy.get("[data-cy=vessel-1]").should("not.exist");
-    cy.get("[data-cy=vessel-2-view]").contains("View (1)");
-  });
-
 });
