@@ -1,0 +1,20 @@
+<div class="l-row">
+  <div class="l-col-xs-26">
+    <%= component "tab_bar", classes: "u-mb-l", flush: true do |tb| %>
+      <% tb.tabs title: "General",
+                 url: edit_manage_organization_settings_organization_path(@organization),
+                 active: controller_name == "organizations",
+                 data: {
+                  cy: "general"
+                 } do %> <% end %>
+      <% if Pundit.policy([@organization, current_user], %i[manage settings meta_data]).edit? %>
+        <% tb.tabs title: "Meta Data",
+                   url: edit_manage_organization_settings_meta_data_path(@organization),
+                   active: controller_name == "meta_data",
+                   data: {
+                    cy: "meta_data"
+                   } do %> <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

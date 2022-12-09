@@ -1,0 +1,25 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:prettier/recommended"
+  ],
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true
+  },
+  "globals": {
+    "Rails": true,
+    "PubSub": true
+  },
+  "plugins": [
+    "disallow-methods"
+  ],
+  "rules": {
+    "disallow-methods/disallow-methods": [2, [
+      {
+        "object": "it",
+        "method": "only"
+      }
+    ]]
+  }
+}

@@ -1,0 +1,40 @@
+<%= form_for employment,
+           url: employments_form_url(employment),
+           builder: FormWithDisplayBuilder,
+           remote: true,
+           html: {
+             class: "form-with-display"
+           },
+           data: {
+            controller: "form-with-display",
+            target: "form-with-display.form",
+            form_with_display_editing: @editing || "false"
+           } do |f| %>
+  <div class="u-display-flex u-align-items-center u-mb-xs">
+    <h3 class="u-label-heading u-text-muted u-m-0 u-flex-1">Details</h3>
+    <%= button_tag "Edit",
+                   type: :button,
+                   class: "btn--link u-text-blue form-with-display__edit-toggle u-text-bold",
+                   data: {
+                    action: "form-with-display#enableEdit",
+                    cy: "toggle-edit"
+                  }  %>
+    <%= f.submit "Done", class: "btn btn--primary btn--small", data: { cy: "save-employment" } %>
+  </div>
+
+  <%= f.fields_for :user do |ff| %>
+    <%= ff.text_field :first_name, placeholder: "First name", "data-cy": "first_name" %>
+    <%= ff.text_field :last_name, placeholder: "Last name", "data-cy": "last_name" %>
+    <%= ff.text_field :email, placeholder: "Email", "data-cy": "email" %>
+  <% end %>
+  <%= f.select :position_id,
+          options_for_select(@organization.positions.by_name.collect {|p| [ p.name, p.id ] }, f.object.position_id),
+          { include_blank: "Select Position", display_value: :position },
+          data: { cy: "select-position" }
+          %>
+  <%= f.select :vessel_id,
+          options_for_select(@organization.vessels.by_name.collect {|v| [ v.name, v.id ] }, f.object.vessel_id),
+          { include_blank: "Select Vessel", display_value: :vessel },
+          data: { cy: "select-vessel" } %>
+  <%= f.text_field :external_id, placeholder: "Employee ID", data: { cy: "external_id" } %>
+<% end %>

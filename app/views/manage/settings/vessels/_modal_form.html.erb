@@ -1,0 +1,28 @@
+<%= component "modal", title: "#{action_name.titleize} Vessel", content_only: true do |c| %>
+  <% c.body do %>
+    <%= form_for @vessel,
+                  url: {
+                    controller: controller_name,
+                    action: @vessel.persisted? ? :update : :create
+                  },
+                  builder: WrappedFormBuilder,
+                  remote: true do |f| %>
+      <div class="modal__body">
+        <%= f.text_field :name, placeholder: "Name", "data-cy": "name" %>
+      </div>
+      <div class="modal__footer">
+        <%= button_tag "Cancel",
+                       type: :button,
+                       class: "btn--link u-mr u-text-muted",
+                       data: { target: "form-activation.action", action: "modal#hide" } %>
+        <%= f.submit "Save",
+          class: "btn btn--primary",
+          data: {
+            cy: "vessel-submit",
+            disable_with: "Saving"
+          }
+        %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

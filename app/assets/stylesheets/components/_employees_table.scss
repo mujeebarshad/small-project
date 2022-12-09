@@ -1,0 +1,71 @@
+//
+// COMPONENTS / EMPLOYEES TABLE
+//-----------------------------------------------------------------------
+
+.c-employees-table {
+  .c-progress-bar {
+    max-width: 120px;
+  }
+
+  th, td {
+    @include media($from: xs, $to: sm) {
+      &:nth-child(1) {
+        padding-right:0px;
+      }
+    }
+  }
+
+  td:nth-child(2) {
+    white-space:nowrap;
+
+    @include media($from: xs, $to: sm) {
+      max-width:0;
+      width:100%;
+      overflow:hidden;
+      line-height:1;
+
+      a {
+        width:100%;
+        overflow:hidden;
+        text-overflow:ellipsis;
+        padding-right:20px;
+
+        padding-top:$space-xxs;
+        padding-bottom:$space-xxs;
+
+        svg {
+          position:absolute;
+          right:0;
+          top:50%;
+          transform:translateY(-50%);
+        }
+      }
+    }
+  }
+
+  th, td {
+    &:nth-child(3),
+    &:nth-child(4),
+    &:nth-child(5),
+    &:nth-child(6),
+    &:nth-child(7) {
+      display:none;
+    }
+
+
+    @include media($from: sm) {
+      &:nth-child(5),
+      &:nth-child(7) {
+        display:table-cell;
+      }
+    }
+
+    @include media($from: md) {      
+      &:nth-child(3),
+      &:nth-child(4),
+      &:nth-child(6) {
+        display:table-cell;
+      }
+    }
+  }
+}

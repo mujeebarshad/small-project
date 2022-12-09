@@ -1,0 +1,201 @@
+//
+// UTILITIES / TYPE
+//-----------------------------------------------------------------------
+
+.u-text-hero {
+  font-size: $font-size-hero;
+  line-height: 1.2;
+}
+
+.u-line-height-1 {
+  line-height: 1;
+}
+
+.u-line-height-medium {
+  line-height:1.4;
+}
+
+.u-line-height-small {
+  line-height:1.2;
+}
+
+.u-line-height-large {
+  line-height:1.65;
+}
+
+.u-h-uppercase-divider {
+  margin: $space-s 0 $space-l;
+  padding: $space-xs 0;
+  border-bottom: 1px solid $border-standard;
+  color: $fg-muted-color;
+  font-weight: $font-weight-regular;
+  font-size: $font-size-xs;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.u-list-ordered {
+  padding-left: $space-l;
+  list-style: decimal;
+}
+
+.u-list-unordered {
+  padding-left: $space-l;
+  list-style: disc;
+}
+
+.u-text-green {
+  color: $green-standard !important;
+}
+
+.u-text-red {
+  color: $red-standard !important;
+}
+
+.u-text-blue {
+  color: $blue-standard !important;
+}
+
+.u-text-component-dark {
+  color: $component-dark;
+}
+
+.u-text-white {
+  color: $white;
+}
+
+.u-text-muted {
+  color: $fg-muted-color !important;
+}
+
+.u-text-light {
+  color: $text-light !important;
+}
+
+.u-text-normal {
+  font-weight: 400 !important;
+}
+
+.u-text-medium {
+  font-weight: $font-weight-medium !important;
+}
+
+.u-text-bold {
+  font-weight: 500 !important;
+}
+
+.u-text-bigger {
+  font-size: $font-size-l;
+}
+
+.u-font-size-normal {
+  font-size: $base-font-size;
+}
+
+.u-font-size-m {
+  font-size: $font-size-m;
+}
+
+.u-font-size-l {
+  font-size: $font-size-l;
+}
+
+.u-text-smaller {
+  font-size: $font-size-m;
+  @include media($from: sm) {
+    font-size: $font-size-s;
+  }
+}
+
+.u-text-xs {
+  font-size: $font-size-xs;
+}
+
+.u-text-uppercase {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.u-text-uppercase--smaller {
+  @include text-resp-s-xs;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.u-label-heading {
+  @extend .u-text-uppercase--smaller;
+  @extend .u-text-normal;
+  color: $fg-color;
+}
+
+.u-text-left {
+  text-align: left;
+}
+
+.u-text-right {
+  text-align: right !important;
+}
+
+.u-text-center {
+  text-align: center;
+}
+
+.u-text-serif {
+  font-family: $font-serif;
+}
+
+.u-text-sans-serif {
+  font-family: $font-sans-serif !important;
+}
+
+.u-text-tighter {
+  margin-top: $space-xs;
+}
+
+.u-text-flush-bottom {
+  margin-bottom: 0;
+}
+
+.u-text-flush {
+  margin-top: 0;
+}
+
+.u-text-nowrap {
+  white-space: nowrap;
+}
+
+.u-text-divider {
+  margin-right: 1rem;
+  padding-right: 1rem;
+  border-right: 1px solid $component-light;
+}
+
+.u-hide-text-overflow {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.u-hero-caption {
+  position:relative;
+  position: absolute;
+  left: 0px;
+  bottom: 30px;
+
+  &--white {
+    color: $white;
+  }
+}
+
+.u-logo {
+  @include logo;
+}
+
+.u-sr-only {
+  position:absolute;
+  left:-10000px;
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}

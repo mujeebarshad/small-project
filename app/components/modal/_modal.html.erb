@@ -1,0 +1,24 @@
+<% content = capture do %>
+  <% unless skip_header %>
+    <div class="modal__header <%= if title.blank? then "modal__header--empty" end %>">
+      <h2><%= title %></h2>
+      <%= render partial: "modal_close" %>
+    </div>
+  <% end %>
+  <%= body %>
+<% end %>
+
+<% if content_only %>
+  <%= content %>
+<% else %>
+  <%= content_tag :div, id: id, class: "modal",
+                  data: {
+                    controller: "modal",
+                    action: "click->modal#handleClick",
+                    modal_dismissable: !not_dismissable
+                  } do %>
+    <div class="<%= content_classes %>" data-target="modal.content">
+      <%= content %>
+    </div>
+  <% end %>
+<% end %>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= yield(:title).presence || "Envisage" %></title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload" %>
+
+    <%= javascript_include_tag "application", "data-turbolinks-track": "reload" %>
+    <%= javascript_pack_tag "application", "data-turbolinks-track": "reload" %>
+
+    <%= yield(:head) %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= render "favicons" %>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body class="u-offset-navbar <%= if current_page?(root_url) then "root" end %> <%= body_classes %>" data-controller="tab-navigation file-drag">
+    <% if content_for?(:navigation) %>
+      <%= yield(:navigation) %>
+    <% else %>
+      <%= render "navigation", user: current_user %>
+    <% end %>
+
+    <div class="c-banner-container" id="banner-container">
+      <% if flash.count > 0 %>
+        <% flash.each do |name, message| %>
+          <%= component "banner", message: message, type: name %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <%= yield %>
+
+    <% if @static_page %>
+      <%= render partial: "footer" %>
+    <% end %>
+
+    <%= raw Rails.application.assets_manifest.find_sources('icons.svg').first %>
+    <%= render partial: "base_modals" %>
+  </body>
+</html>

@@ -1,0 +1,81 @@
+//
+// COMPONENTS / SIDEBAR NAV
+//-----------------------------------------------------------------------
+
+.c-sidebar-nav {
+
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  &--explore {
+    @include media($from: md) {
+      padding-left:12px; //SIC
+    }
+    li {
+      margin-bottom: 9px;
+
+      &:last-of-type {
+        margin-bottom:$space-base;
+      }
+    }
+  }
+}
+
+.c-sidebar-nav--explore .c-control {
+  margin-bottom:12px;
+}
+
+.c-sidebar-nav__item {
+  font-size: $font-size-m;
+  & + & {
+    margin-top: $space-s;
+  }
+}
+
+.c-sidebar-nav__link {
+  display: block;
+  color: $fg-color;
+  font-weight: $font-weight-regular;
+  line-height: 20px;
+
+  &:hover, &:focus {
+    color: $hover-fg;
+    text-decoration: none;
+  }
+}
+
+.c-sidebar-nav .icon {
+  margin: -4px 15px 0 0;
+  fill: $gray-icon;
+}
+
+.c-sidebar-nav__item--active {
+  .c-sidebar-nav__link {
+    font-weight: $font-weight-medium;
+  }
+
+  .icon {
+    fill: $fg-color;
+  }
+}
+
+.c-sidebar-nav--small {
+  .c-sidebar-nav__item {
+    font-size: inherit;
+    & + & {
+      margin-top: $space-s;
+    }
+
+    &--active {
+      font-weight:$font-weight-medium;
+    }
+  }
+  a {
+    font-weight:$font-weight-regular;
+  }
+  .icon {
+    margin-right:$space-xxs;
+  }
+}

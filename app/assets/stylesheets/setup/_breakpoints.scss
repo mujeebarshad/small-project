@@ -1,0 +1,12 @@
+//
+// SETUP / BREAKPOINTS
+//-----------------------------------------------------------------------
+
+@mixin breakpoint($point) {
+   @if $point == xl {
+     @media (max-width: 1600px) { @content ; }
+  }
+   @else if $point == l {
+     @media (max-width: 1200px) { @content ; }
+  }
+}

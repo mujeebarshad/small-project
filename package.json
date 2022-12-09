@@ -1,0 +1,29 @@
+{
+  "name": "vessels",
+  "private": true,
+  "dependencies": {
+    "@rails/webpacker": "5.4.3",
+    "@stimulus/polyfills": "^1.1.0",
+    "babel-eslint": "^8.2.3",
+    "core-js": "^3.6.5",
+    "eslint-plugin-disallow-methods": "^0.1.0",
+    "pubsub-js": "^1.6.0",
+    "stimulus": "^1.1.0"
+  },
+  "devDependencies": {
+    "cypress": "9.5.1",
+    "cypress-circleci-reporter": "^0.2",
+    "eslint": "^4.18.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "prettier": "^1.13.4",
+    "wait-on": "^2.1.0"
+  },
+  "scripts": {
+    "cypress": "bin/rake db:seed:reset && cypress open",
+    "cypress:ci": "bin/rake db:seed:reset && LETTER_OPENER=true bin/rails server > /dev/null & wait-on http://localhost:3000 && cypress run"
+  },
+  "engines": {
+    "node": "14.16"
+  }
+}

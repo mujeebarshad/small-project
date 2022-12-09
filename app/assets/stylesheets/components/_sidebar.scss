@@ -1,0 +1,83 @@
+//
+// COMPONENTS / SIDEBAR
+//-----------------------------------------------------------------------
+
+$sidebar-width: 14.24em;
+$sidebar-width-md-up: 17.24em;
+$sidebar-width-builder: 24.5em;
+$sidebar-width-wide: 26.5em;
+
+.c-sidebar {
+  position: fixed;
+  top: $c-navigation-height;
+  bottom: 0;
+  left: 0;
+  padding: 30px 20px;
+  border-right: 2px solid $component-light;
+  background: $background-medium;
+  z-index:1;
+
+  width: $sidebar-width;
+
+  @include media($from: md) {
+    width: $sidebar-width-md-up;
+  }
+
+  &--explore {
+    padding: $space-l 0 0 $space-l;
+  }
+
+  &--builder {
+    width: $sidebar-width-builder;
+    overflow: auto;
+  }
+
+  &--white {
+    background:white;
+  }
+
+  &--transparent {
+    background: transparent;
+    border: 0 none;
+  }
+
+  &--wide {
+    width: $sidebar-width-wide;
+    padding-left: $space-l;
+    padding-right: $space-l;
+  }
+
+  &--right {
+    left:auto;
+    right:0;
+    border-right: 0 none;
+    border-left: 1px solid $component-light;
+  }
+}
+
+.l-container.l-container--builder {
+  margin-left: $sidebar-width-builder + 1.4em;
+  margin-right: 1.4em;
+}
+
+.c-sidebar--transparent + .l-main > .l-container--with-sidebar {
+  @include media($from: sm) {
+    margin-left: $sidebar-width;
+  }
+
+  @include media($from: md) {
+    margin-left: $sidebar-width-md-up;
+  }
+}
+
+.c-sidebar + .l-main > .l-container--with-sidebar-right {
+  @include media($from: md) {
+    margin-right: $sidebar-width;
+  }
+}
+
+.c-sidebar.c-sidebar--wide + .l-main > .l-container--with-sidebar-right {
+  @include media($from: md) {
+    margin-right: $sidebar-width-wide;
+  }
+}

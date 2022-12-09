@@ -1,0 +1,33 @@
+<%= component "modal", title: "Invite Employee", content_only: true do |c| %>
+  <% c.body do %>
+    <%= form_for @employment,
+                  url: employments_form_url(@employment),
+                  builder: WrappedFormBuilder,
+                  include_id: false,
+                  remote: true do |f| %>
+      <div class="modal__body u-pr-xxl">
+        <%= f.fields_for :user do |ff| %>
+          <%= ff.email_field :email, placeholder: "Eg. tomas_lindberg@yahoo.com", "data-cy": "email" %>
+        <% end %>
+        <%= f.text_area :invite_message,
+                        label: "Message",
+                        label_options: { optional: true },
+                        placeholder: "Write a welcome message",
+                        rows: 4 %>
+      </div>
+      <div class="modal__footer">
+        <%= button_tag "Cancel",
+                       type: :button,
+                       class: "btn--link u-mr u-text-muted",
+                       data: { action: "modal#hide" } %>
+        <%= f.submit "Invite",
+          class: "btn btn--primary",
+          data: {
+            cy: "save-employment",
+            disable_with: "Saving"
+          }
+        %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

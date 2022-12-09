@@ -1,0 +1,4 @@
+PubSub.publish('infiniteScrollLoaded', {
+  content: '<%= j(render(partial: "manage/employees/shared/manage_employment_row", collection: @employments, as: :employment)) %>',
+  links: '<%= j(will_paginate @employments) %>'
+});

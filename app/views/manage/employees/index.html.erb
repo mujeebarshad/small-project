@@ -1,0 +1,87 @@
+<%= render 'manage/sidebar' %>
+
+<div class="l-main" data-controller="employment-bulk">
+  <div class="l-container l-container--with-sidebar">
+    <div class="l-row">
+      <div class="l-col-xs-26">
+        <div class="l-page-header l-page-header--with-actions l-page-header--employees">
+          <h1 class="l-page-header__title u-display-inline-block u-mr-s">Employees</h1>
+          <%= link_to "Invite",
+                        new_manage_organization_employee_path(@organization),
+                        remote: true,
+                        class: 'btn btn--primary u-sm-up-hidden',
+                        data: {
+                          controller: "modal-remote-trigger",
+                          action: "modal-remote-trigger#show",
+                          modal_remote_trigger_id: "remote_modal"
+                        } %>
+          <div class="u-flex-break u-mt u-sm-up-hidden"></div>
+          <div class="l-page-header__action">
+            <%= link_to "Invite",
+                        new_manage_organization_employee_path(@organization),
+                        remote: true,
+                        class: 'btn btn--primary u-xs-hidden',
+                        data: {
+                          controller: "modal-remote-trigger",
+                          action: "modal-remote-trigger#show",
+                          modal_remote_trigger_id: "remote_modal",
+                          cy: "new-employment"
+                        } %>
+          </div>
+        </div>
+        <%= form_for :employees,
+                      url: "",
+                      remote: true,
+                      method: :get,
+                      data: {
+                        target: "employment-bulk.form"
+                      } do |f| %>
+
+          <%= render partial: "manage/employees/hidden_filter_fields" %>
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+          <%= hidden_field_tag :_method, :get %>
+          <table class="c-table c-employees-table">
+            <thead>
+              <tr>
+                <th class="c-table__checkbox-column">
+                  <label class="c-control c-control--no-label" data-cy="select-all">
+                    <%= check_box_tag :select_all, true, false,
+                                    data: {
+                                      target: "employment-bulk.selectAll",
+                                      action: "employment-bulk#handleSelectAll"
+                                    } %>
+                    <span class="c-control__indicator"></span>
+                  </label>
+                </th>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Vessel</th>
+                <th>Progress</th>
+                <th>Last seen</th>
+                <th class="u-text-right"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% if @employments.any? %>
+                <%= render partial: "manage/employees/shared/manage_employment_row",
+                           collection: @employments,
+                           as: :employment %>
+              <% else %>
+                <tr>
+                  <td colspan="7">
+                    <div class="c-empty-state u-mt-s">
+                      <p>No employees found</p>
+                    </div>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+          <div id="infinite-scrolling" class="infinite-scroll" data-controller="infinite-scroll" data-target="infinite-scroll.linkWrapper">
+            <%= will_paginate @employments %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

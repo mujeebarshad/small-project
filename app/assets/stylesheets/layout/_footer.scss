@@ -1,0 +1,22 @@
+//
+// COMPONENTS / FOOTER
+//
+
+.c-footer {
+  padding: $space-s 0 #{$space-xxl * 2};
+  border-top:1px solid $border-standard;
+
+  p {
+    margin-top:0;
+  }
+
+  h4 {
+    margin: $space-s 0 $space-xxs;
+  }
+
+  ul.c-footer__links li {
+    margin-bottom: $space-xxs;
+  }
+
+  &__column {}
+}

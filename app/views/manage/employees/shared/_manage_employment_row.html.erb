@@ -1,0 +1,73 @@
+<tr id="employment-<%= employment.id %>" data-cy="employment-<%= employment.id %>">
+  <td class="c-table__checkbox-column">
+    <label class="c-control c-control--no-label" data-cy="bulk-employment-<%= employment.id %>">
+      <%= check_box_tag "ids[]", employment.id, false,
+                        data: {
+                          target: "employment-bulk.checkbox",
+                          action: "employment-bulk#handleSingleSelect"
+                        } %>
+      <span class="c-control__indicator"></span>
+    </label>
+  </td>
+  <td>
+    <%= link_to edit_manage_organization_employee_path(employment.organization, employment),
+          remote: true,
+          data: {
+            controller: "profile-card-remote-trigger",
+            action: "profile-card-remote-trigger#show",
+            profile_card_remote_trigger_id: "profile_card",
+            cy: "edit-employment-#{employment.id}"
+          } do %>
+      <span class="u-mr-xs">
+        <img src=" https://via.placeholder.com/300" class="c-avatar" >
+      </span>
+      <%= employment.user.full_name %>
+      <%= icon("caret-right", size: 13, classes: "u-sm-up-hidden") %>
+    <% end %>
+  </td>
+  <td class="u-text-muted">
+    <%= content_tag(:span, "N/A", class: "u-text-muted") %>
+  </td>
+  <td class="u-text-muted">
+    <%= component "context_menu" do |c| %>
+      <% c.toggle(classes: "btn u-with-hover-arrow", data: { cy: "edit-vessel-employment-#{employment.id}" }) do %>
+        <%= content_tag(:span, employment.vessel&.name || "N/A", class: "u-text-muted") %>
+      <% end %>
+      <% c.drop(modifiers: %w[bottom-tighter left auto]) do %>
+        <ul>
+          <li class="c-context-menu__item">
+            <%= link_to "Edit Vessel", "#" %>
+          </li>
+        </ul>
+      <% end %>
+    <% end %>
+  </td>
+  <td class="u-text-muted">
+    No started courses
+  </td>
+  <td class="u-text-muted">
+    N/A
+  </td>
+  <td class="u-text-muted u-text-right">
+    <%= component "context_menu" do |c| %>
+      <% c.toggle(data: { cy: "context-employment-#{employment.id}" }) do %>
+        <%= icon "dots" %>
+      <% end %>
+      <% c.drop(modifiers: %w[left bottom-tighter small]) do %>
+        <ul>
+          <li class="c-context-menu__item">
+            <%= link_to "Remove Employee",
+                          manage_organization_employee_path(employment.organization, employment),
+                          method: :delete,
+                          remote: true,
+                          class: "u-text-red",
+                          data: {
+                            cy: "destroy-employment-#{employment.id}",
+                            confirm: "Are you sure you want to remove the user?"
+                          } %>
+          </li>
+        </ul>
+      <% end %>
+    <% end %>
+  </td>
+</tr>

@@ -1,0 +1,156 @@
+//
+// COMPONENTS / TAB-BAR
+//-----------------------------------------------------------------------
+.c-tab-bar {
+  margin-bottom: $space-base;
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 1px;
+    width: 100%;
+    border-bottom: 1px solid $border-standard;
+    z-index: -1;
+  }
+
+  &:after,
+  &__wrapper:before {
+    content: '';
+    position:absolute;
+    height: calc(100% - 4px);
+    top:0;
+    width:20px;
+  }
+
+  &:after {  
+    background: linear-gradient(90deg, rgba($white-dark,0) 0%, rgba($white-dark,0.5) 25%, rgba($white-dark,1) 100%);
+    right: 0;
+  }
+  
+  &__wrapper:before {
+    pointer-events:none;
+    transition: opacity 200ms ease-in-out;
+    opacity: 0;
+    left:0;
+    background: linear-gradient(270deg, rgba($white-dark,0) 0%, rgba($white-dark,0.5) 25%, rgba($white-dark,1) 100%);
+  }
+  &--scrolled &__wrapper:before {
+    opacity:1;
+  }
+
+  &__wrapper {
+    overflow-x:hidden;
+    display:flex;
+    flex-wrap: nowrap;
+
+    &:after {
+      content: ' ';
+      min-width:20px;
+    }
+  }
+  &--touch &__wrapper {
+    overflow-x: auto;
+  }
+
+  &--centered-border::before {
+    bottom:17px;
+    left:0;
+    z-index:0;
+  }
+
+  &--stretched {
+    &::before {
+      width: calc(100vw - 8px);
+      left: calc(50% - 50vw);
+    }
+  }
+
+  &--flush .c-tab-bar__tab {
+    margin-top: 0;
+  }
+
+  @include media($from: xs, $to: sm) {
+    &--mobile {
+      display:flex;
+      &::before {
+        width: calc(100vw);
+      }
+      .c-tab-bar__tab {
+        flex: 1;
+      }
+    }
+  }
+}
+
+.c-tab-bar__tab {
+  @include btn;
+
+  padding: $space-s 0px 18px;
+  margin-top: $space-s;
+  text-transform: uppercase;
+  @include text-resp-s-xs;
+
+  letter-spacing: 0.1em;
+  color: $fg-muted-color;
+  white-space:nowrap;
+
+  &--active {
+    border-bottom: 3px solid $fg-color;
+    color: $fg-color;
+  }
+
+  & + & {
+    margin-left: $space-base;
+  }
+}
+
+.c-tab-bar__button {
+  @include btn;
+
+  z-index:1;
+  position:relative;
+  border-width: 1px;
+  border-color: $border-standard;
+  border-radius: 0;
+  background: $white;
+  box-shadow: 0 1px 3px 0 rgba(black, 0.04);
+
+  @include media($from: xs, $to: sm) {
+    font-size:$font-size-s;
+  }
+
+  width:25%;
+  padding:8px 13px;
+  @include media($from: sm) {
+    width:24%;
+    padding:8px 17px;
+  }
+
+
+  &:first-of-type {
+    border-radius: 2px 0 0 2px;
+  }
+
+  &:last-of-type {
+    border-radius: 0 2px 2px 0;
+  }
+  
+  & + & {
+    margin-left:0px;
+    border-left:0 none;
+  }
+
+  &.c-tab-bar__tab--active {
+    background: $background-medium;
+    color: $text-light;
+    box-shadow: none;
+  }
+}
+
+.c-tab-bar__additional {
+  padding:0;
+  height:30px;
+  width:30px;
+}

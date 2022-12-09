@@ -1,0 +1,7 @@
+document.getElementById('employment-<%= @employment.id %>').innerHTML = '<%= j(render(partial: "manage/employees/shared/manage_employment_row", locals: { employment: @employment })) %>';
+
+var template = document.createElement('div');
+template.innerHTML = '<%= j(render(partial: "manage/employees/shared/employment_form", locals: {employment: @employment})) %>';
+
+var form = document.getElementById('edit_employment_<%= @employment.id %>');
+form.parentNode.replaceChild(template.firstElementChild, form);

@@ -1,0 +1,127 @@
+//
+// UTILITIES / ICONS
+//-----------------------------------------------------------------------
+
+.icon {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  vertical-align: middle;
+  fill: $gray-icon;
+}
+
+// TODO: replace with classes icon--black etc
+.icon--checkmark-blue {
+  fill: $blue-standard;
+}
+
+// TODO: replace with classes icon--black etc
+.icon--checkmark-green {
+  fill: $green-standard;
+}
+
+// TODO: replace with classes icon--black etc
+.icon--close-red {
+  fill: $red-standard;
+}
+
+// TODO: replace with helper
+.icon--share {
+  width: 22px;
+  height: 22px;
+}
+
+// TODO: replace with helper
+.icon--camera {
+  width: 44px;
+  height: 24px;
+}
+
+.icon--arrow-expand {
+  float: right;
+  width: 10px;
+  height: 6px;
+}
+
+.icon--toggle-user-nav {
+  margin: 15px 0 0 10px;
+}
+
+.icon--black {
+  fill: $black;
+}
+
+.icon--component-dark {
+  fill: $component-dark;
+}
+
+.icon--component-medium {
+  fill: $component-medium;
+}
+
+.icon--blue {
+  fill: $blue-standard;
+}
+
+.icon--green {
+  fill: $green-standard;
+}
+
+.icon--red {
+  fill: $red-standard;
+}
+
+.icon--yellow {
+  fill: $yellow-standard;
+}
+
+.icon--white {
+  fill: $white;
+}
+
+a, button {
+  &:hover, &:focus {
+    .icon {opacity:.8;}
+    .icon--black {
+      fill: $hover-fg;
+      opacity:1;
+    }
+    .icon--blue {
+      fill: $hover-blue;
+      opacity:1;}
+    .icon--red {
+      fill: $hover-red;
+      opacity:1;
+    }
+    .icon--white {
+      fill: $hover-white;
+      opacity:1;
+    }
+  }
+}
+
+.icon--with-border {
+  height: 63px;
+  width: 63px;
+  border-radius: 100%;
+  border: 3px solid $component-medium;
+  background:$white;
+  overflow:visible;
+
+  &--checkmark {
+    padding: 21px;
+  }
+  &--close {
+    padding:22px;
+    @include media($from: sm) {
+      padding: 23px;
+    }
+  }
+  &--webcam {
+    background:transparent;
+    height:32px;
+    width:32px;
+    padding:8px;
+    border: 2px solid $component-dark;
+  }
+}

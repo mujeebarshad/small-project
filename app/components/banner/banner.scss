@@ -1,0 +1,61 @@
+.c-banner-container {
+  left: 50%;
+  transform: translateX(-50%);
+  position: fixed;
+  top: 23px;
+  z-index: $c-toast-z;
+  pointer-events:none;
+}
+.c-banner {
+  margin-top:$space-xxs;
+  margin-bottom:$space-xxs;
+  pointer-events:auto;
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction:row;
+    border: 1px solid $component-medium;
+    border-radius: 2px;
+    box-shadow: 0 0 4px 1px rgba(0, 0, 0, .06);
+    padding: $space-xs $space-s;
+    background-color: $white-dark;
+    opacity:0;
+    min-width:300px;
+    user-select: none;
+  }
+
+  &__content--show {
+    opacity:1;
+    @extend .animation--fade-in-down;
+  }
+
+  &__close {
+    background: transparent;
+    border:0 none;
+    margin-left:20px;
+    float:right;
+    cursor:pointer;
+    line-height:18px;
+
+    svg {
+      width:12px;
+      height:12px;
+    }
+  }
+}
+
+.c-banner--success .c-banner__content {
+  border-color: $green-medium;
+  background-color: $green-light;
+}
+
+.c-banner--danger .c-banner__content {
+  border-color: $red-medium;
+  background-color: $red-light;
+}
+
+.c-banner--info .c-banner__content {
+  border-color: $yellow-medium;
+  background-color: $yellow-light;
+}

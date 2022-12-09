@@ -1,0 +1,365 @@
+.modal {
+  display: none;
+  position: fixed;
+  z-index: $c-modal-z;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  min-width: $min-width;
+  background-color: rgba(black, 0.5);
+  @extend .animation--fade;
+}
+
+.modal--display {
+  display: flex;
+}
+
+.modal__content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid $border-standard;
+  border-radius: 2px;
+  background-color: white;
+  box-shadow: 1px 1px 20px 3px rgba(0, 0, 0, 0.25);
+  margin: auto;
+  max-width: 700px;
+  max-height: 86%;
+  overflow: auto;
+
+  @extend .animation--fade-in-down;
+
+  .modal__body {
+    padding: 0 $space-s $space-s;
+    @include media($from: sm) {
+      padding: $space-l;
+      padding-top: 0;
+    }
+  }
+
+  @include media($from: xs, $to: sm) {
+    width: calc(100% - #{$gutter-xs * 2});
+  }
+
+  @include media($from: sm) {
+    min-width: 500px;
+
+    &--small {
+      width: 500px;
+    }
+
+    &--medium {
+      width: 580px;
+    }
+
+    &--huge {
+      width: 500px;
+    }
+  }
+  &--huge {
+    @include media($from: md) {
+      width:auto;
+      max-width: 880px;
+    }
+  }
+
+  &--responsive {
+    @include media($from: xs, $to: sm) {
+      margin:0;
+      border-radius:0;
+      max-height:100vh;
+      max-width:none;
+      width: 100%;
+      overflow:hidden;
+    }
+  }
+
+  &--full-screen {
+    height:100vh;
+    width:100vw;
+    top:0;
+    left:0;
+    border-radius:0;
+    border:0 none;
+    overflow:hidden;
+    max-width:none;
+    max-height:none;
+    min-width:0;
+
+    .modal__close {
+      top:unset;
+      svg {
+        fill:$black;
+        height:14px;
+        width:14px;
+      }
+    }
+
+    .modal__header {
+      padding: $space-s;
+      justify-content:center;
+      border-bottom:1px solid $border-standard;
+      align-items:center;
+
+      h2 {
+        font-size:$font-size-h4;
+      }
+    }
+
+    .modal__body {
+      overflow-y:auto;
+      padding:$space-s $gutter-xs;
+      background: $background-light;
+
+      &:after {
+        content: "";
+        display:block;
+        height:$space-xxxl;
+      }
+    }
+  }
+
+  &--borderless {
+    border: 0 none;
+  }
+
+  &--scroll {
+    min-height: 0px;
+    .modal__body {
+      border-top: 1px solid $border-standard;
+      padding-top:$space-base;
+      max-height:400px;
+      min-height:200px;
+      overflow-y: scroll;
+    }
+  }
+}
+
+.modal__content--loading {
+  background-image: asset_url('icons/inline-loader.svg');
+  background-size:55px;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+.modal__content {
+  &--loading,
+  &--error-message {
+    min-height:250px;
+  }
+}
+
+.modal__header {
+  display: flex;
+  justify-content: space-between;
+  padding: $space-base;
+  padding-top: 25px; // (sic)
+
+  @include media($from: sm) {
+    padding-left: $space-l;
+  }
+
+  h2 {
+    margin-bottom: 0;
+  }
+}
+
+.modal__header--border {
+  border-bottom: 1px solid $border-standard;
+  margin-bottom: $space-base;
+}
+
+.modal__body {
+  flex: 1;
+  overflow: auto;
+
+  &--content-padded {
+    @include media($from: sm) {
+      padding-right: $space-xl !important;
+    }
+  }
+
+  &--scroll {
+    max-height: 400px;
+  }
+}
+
+.modal__footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 $space-base $space-base;
+
+  &--with-border {
+    border-top: 1px solid $border-standard;
+    padding-top: $space-base
+  }
+
+  &--tighter {
+    padding: $space-xs;
+  }
+}
+
+.modal__close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border: none;
+  background-color: transparent;
+  font-size: inherit;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font: inherit;
+  padding-right: .5rem;
+  padding-left: .5rem;
+  padding-top: 0;
+  padding-bottom: 0;
+  cursor: pointer;
+  z-index:1;
+}
+
+.modal__content--error-message p {
+  max-width: 350px;
+  margin: auto;
+  text-align: center;
+  color: $fg-muted-color;
+}
+
+.modal__content--error-message button {
+  background: transparent;
+  border-color: transparent;
+  color: $primary-color;
+  margin-top: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+}
+
+.modal__content--padded {
+    .modal__header {
+      padding-bottom:$space-l;
+      padding-top:$space-l;
+    }
+    .modal__header.modal__header--empty {
+      padding-bottom:$space-xs;
+    }
+    .modal__body {
+      padding-bottom: $space-l;
+      padding-top: 0;
+    }
+    .modal__footer {
+      padding-bottom: $space-l;
+      padding-top: $space-l;
+    }
+
+  @include media($from: sm) {
+    .modal__header,
+    .modal__body,
+    .modal__footer {
+      padding-left: $space-l;
+      padding-right: $space-l;
+    }
+  }
+}
+
+.c-onboarding-wizard {
+  overflow:visible;
+  border:0 none;
+  background:transparent;
+
+  .c-wizard {
+    transition: height 200ms ease-in-out;
+  }
+
+  &__step {
+    max-height: calc(100vh - 70px);
+    overflow-y: auto;
+  }
+  .modal__header, .modal__body, .modal__footer {
+    background-color:$white;
+  }
+  .modal__body {
+    overflow-y:auto;
+    min-height:300px;
+    max-height:100%;
+  }
+  .modal__header { border-radius:4px 4px 0 0; }
+  .modal__footer { border-radius:0 0 4px 4px; }
+  .modal__footer .u-text-muted{
+    margin-left:$space-xs;
+  }
+  
+  &__intro {
+    background: image_url('onboarding-intro.png');
+    background-size:cover;
+    background-position: center bottom;
+    border-radius:4px;
+    padding-top:0 !important;
+    padding-bottom:$space-xl !important;
+
+    @include media($from: sm) {
+      padding-left: $space-xl !important;
+      padding-right: $space-xl !important;
+
+      p {
+        padding-left:$space-base;
+        padding-right:$space-base;
+      }
+    }
+
+    &__logo {
+      margin-top: $space-xxl;
+      margin-bottom:140px;
+
+      @include media($from: sm) {
+        margin-bottom:200px;
+      }
+    }
+
+    @include media($from: xs, $to: sm) {
+      .u-button-wrapper {
+        padding-left:$space-s;
+        padding-right:$space-s;
+      }
+    }
+  }
+  &__topics {
+    background:$white;
+    border-radius:4px;
+    min-height:370px;
+
+    .modal__body {
+      padding-bottom:0;
+  
+      @include media($from: xs, $to: sm) {
+        max-height:377px;
+        overflow-y:auto;
+      }
+
+      @include media($from: sm) {
+        min-height:380px;
+      }
+    }
+  }
+  &__apps {
+    h3 {
+      @include media($from: xs, $to: sm) {
+        padding-left:$space-l;
+        padding-right:$space-l;
+      }
+    }
+    .modal__body {
+      padding-bottom: 0px !important;
+    }
+  }
+
+  .c-wizard__dots {
+    bottom:-30px;
+
+    &__dot--current {
+      background: $component-dark;
+    }
+  }
+}

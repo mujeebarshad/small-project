@@ -1,0 +1,356 @@
+//
+// COMPONENTS / BUTTON
+//-----------------------------------------------------------------------
+
+@mixin btn {
+  border: 1px solid transparent;
+  border-radius: 2px;
+  background-color: transparent;
+  padding: $space-xs $space-s; //padding: 0.75rem 1rem;
+  font-size: inherit;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  text-decoration: none;
+  font: inherit;
+  text-align:center;
+
+  &:hover, &:focus {
+    cursor: pointer;
+    text-decoration: none;
+  }
+}
+
+@mixin responsive-button {
+  font-size: $font-size-button-resp;
+  padding: $space-xs $space-s;
+
+  @include media($from: sm) {
+    font-size: $font-size-xs;
+    padding: $space-xs $space-s;
+  }
+}
+
+button {
+  font-family: inherit;
+}
+
+.btn {
+  @include btn;
+  @include text-resp-m-s;
+
+  & + & {
+    margin-left: $space-xs;
+  }
+}
+
+.btn--link {
+  background: none;
+  border: none;
+  cursor: pointer;
+  @include text-resp-m-s;
+
+  &:hover {
+    color: $hover-fg;
+  }
+
+  &.u-text-blue:hover {
+    color: $hover-blue !important;
+  }
+
+  &.u-text-muted:hover {
+    color: $hover-fg-muted !important;
+  }
+
+  &.u-text-blue:hover {
+    color: $hover-blue !important;
+  }
+
+  &.u-text-red:hover {
+    color: $hover-red !important;
+  }
+
+  &.u-text-white:hover {
+    color: $hover-white !important;
+  }
+
+  &[disabled] {
+    cursor:default;
+    text-decoration:none;
+    pointer-events:none;
+  }
+}
+
+.btn--icon {
+  padding: 0 .3rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:disabled,
+.btn[disabled="disabled"],
+a.disabled {
+  pointer-events: none;
+  cursor: pointer;
+  opacity: .5;
+}
+
+button.btn--link:disabled[disabled],
+.btn--link:disabled,
+.btn--link[disabled="disabled"] {
+  opacity: .6;
+}
+
+.btn--full-width {
+  width:100%;
+}
+
+@include media($from: xs, $to: sm) {
+  .u-xs-btn--full-width {
+    width:100%;
+  }
+}
+
+.btn--inline {
+  margin-left: $space-xs;
+}
+
+.btn--primary {
+  @include btn;
+  @include responsive-button;
+
+  border-color: $btn-primary-color;
+  background-color: $btn-primary-color;
+  color: $white;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+
+  &:hover, &:focus {
+    border-color: $btn-primary-hover;
+    background-color: $btn-primary-hover;
+    color: $white;
+  }
+}
+
+.btn--secondary {
+  @include btn;
+  @include responsive-button;
+
+  box-shadow: 1px 1px 2px 0px rgba(black, 0.04);
+  border-color: $form-border-standard;
+  background-color: $white;
+  color: $fg-color;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+
+  &:hover {
+    border-color: $form-border-active;
+    color: $fg-color;
+  }
+}
+
+.btn--danger {
+  @include btn;
+  @include responsive-button;
+
+  border-color: $red-standard;
+  background-color: $red-standard;
+  color: $white;
+  text-transform: uppercase;
+  @include text-resp-s-xs;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+
+  &:hover {
+    background:$red-medium;
+    border-color: $red-medium;
+    color: $white;
+  }
+}
+
+.btn--green {
+  @include btn;
+  @include responsive-button;
+
+  border-color: $green-standard;
+  background-color: $green-standard;
+  color: $white;
+  text-transform: uppercase;
+  @include text-resp-s-xs;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+
+  &:hover {
+    background:$green-medium;
+    border-color: $green-medium;
+    color: $white;
+  }
+}
+
+.btn--translucent {
+  @include btn;
+  @include responsive-button;
+
+  border-color: $text-medium;
+  background-color: $black;
+  color: $component-light;
+
+  text-transform: uppercase;
+  @include text-resp-s-xs;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+
+  &:hover { background-color: lighten($black, 3%); }
+}
+
+.btn.u-text-red:hover {
+  color:$hover-red !important;
+}
+
+.btn--medium {
+  padding: 0.56rem 1rem;
+}
+
+.btn--large {
+  padding: .82rem 1.56rem;
+}
+
+.btn--capitalize {
+  text-transform: capitalize;
+}
+
+.btn--muted {
+  border-color: $border-standard;
+  background-color: $white;
+  color: $fg-muted-color;
+}
+
+.btn--topic {
+  border-color:$component-medium;
+  background-color:$white;
+  color:$text-medium;
+  @include text-resp-s-xs;
+
+  padding: #{$space-xxs - 0.1} $space-xs $space-xxs;
+  border: 1px solid $border-standard;
+  border-radius:30px;
+  color: $text-medium;
+
+  &:hover {
+    border-color:$text-light;
+    color:$text-medium;
+  }
+}
+
+.btn--footer-left {
+  padding: $space-xs
+}
+
+.btn--small {
+  padding: 7px $space-xs; // (sic)
+  @include text-resp-s-xs;
+}
+
+.btn--omniauth-yahoo {
+  background-image: image-url("logo-yahoo.png");
+  background-repeat: no-repeat;
+  background-size: 19px auto;
+  background-position: center left 14px;
+}
+
+.btn--omniauth-google {
+  background-image: image-url("logo-google.png");
+  background-repeat: no-repeat;
+  background-size: 19px auto;
+  background-position: center left 14px;
+}
+
+.btn--omniauth-apple {
+  background-image: image-url("logo-apple.png");
+  background-repeat: no-repeat;
+  background-size: 18px auto;
+  background-position: 14px calc(50% - 1px);
+}
+
+.btn--play {
+  border-radius:30px;
+  background:$white;
+  border:1px solid $border-standard;
+  color:$black;
+  padding-left:$space-base;
+  padding-right:$space-base;
+  cursor:pointer;
+
+  svg {
+    position:relative;
+    top:-1px;
+  }
+
+  &:hover, &:active, &:focus {
+    color:$black;
+    background:$background-medium;
+    svg {
+      fill: $black;
+    }
+  }
+}
+
+.btn--filter {
+  @include text-resp-s-xs;
+  text-transform: none;
+  padding: 8px 12px;
+  letter-spacing:0;
+  border-radius:4px;
+
+  svg {
+    margin-top:-2px;
+  }
+}
+
+.btn--secondary.btn--filter .icon:hover {
+  fill: $black;
+}
+
+.btn--capture {
+  background:$white;
+  border-radius:50%;
+  width:60px;
+  height:60px;
+  overflow:hidden;
+  padding:0;
+
+  &:hover {
+    background: $text-light;
+  }
+  &:active {
+    background: $text-medium;
+  }
+  .icon.icon--black { fill: $black; }
+}
+
+.u-with-hover-arrow {
+  position:relative;
+  padding:0;
+  padding-right:15px;
+
+  &:after {
+    position:absolute;
+    opacity:0;
+    content: "";
+    background: image-url("arrow-expand.svg") top 55% right no-repeat;
+    width:100%;
+    height:100%;
+    left:0;
+    top:0;
+    transition: opacity .15s;
+  }
+}
+.c-context-menu--open .u-with-hover-arrow,
+.u-with-hover-arrow:hover {
+  &:after {
+    opacity:1;
+  }
+}

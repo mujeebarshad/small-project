@@ -1,0 +1,16 @@
+<%= render 'manage/sidebar' %>
+
+<div class="l-main">
+  <div class="l-container l-container--with-sidebar">
+    <div class="l-row">
+
+      <div class="l-col-xs-26 l-col-sm-26 l-col-md-20">
+        <div class="l-page-header l-page-header--with-actions">
+          <h1 class="l-page-header__title u-h2" data-cy="title">Settings</h1>
+        </div>
+        <%= render partial: "manage/settings/navigation" %>
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+</div>

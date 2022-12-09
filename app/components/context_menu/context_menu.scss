@@ -1,0 +1,130 @@
+//
+// COMPONENTS / CONTEXT MENU
+//-----------------------------------------------------------------------
+
+.c-context-menu {
+  position: relative;
+  display: inline-block;
+
+  @include media($from: xs, $to: sm) {
+    &--responsive {
+      position: initial;
+    }
+    &--responsive &__drop {
+      left:$gutter-xs;
+      right:$gutter-xs;
+      min-width: calc(#{$min-width} - #{$gutter-xs * 2});
+    }
+  }
+}
+
+.c-context-menu__drop {
+  display: none;
+  position: absolute;
+  min-width: 250px;
+  overflow-y: auto;
+  box-shadow: 0 1px 4px 1px rgba(black, 0.06);
+  border: 1px solid $border-standard;
+  border-radius: 3px;
+  background-color: $white;
+  text-align: left;
+  z-index: 100;
+}
+
+.c-context-menu__drop--auto {
+  min-width: 0;
+}
+
+.c-context-menu__drop--small {
+  min-width: 170px;
+}
+
+.c-context-menu__drop--medium {
+  min-width: 290px;
+}
+
+.c-context-menu__drop--wide {
+  min-width: 400px;
+}
+
+.c-context-menu__drop--left {
+  right: 0px;
+}
+
+.c-context-menu__drop--right {
+  left: 0px;
+}
+
+.c-context-menu__drop--padded {
+  padding: 20px;
+}
+
+.c-context-menu__drop--bottom {
+  margin-top: $space-s;
+  @extend .animation--fade-in-down;
+}
+
+.c-context-menu__drop--bottom-tighter {
+  margin-top: 0;
+  @extend .animation--fade-in-down;
+}
+
+.c-context-menu__drop--bottom-large {
+  margin-top: 45px;
+  top: 100%;
+}
+
+.c-context-menu__drop--scroll {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.c-context-menu__drop--top {
+  bottom: 100%;
+  margin-bottom: 10px;
+  @extend .animation--fade-in-up;
+}
+
+.c-context-menu--open .c-context-menu__drop {
+  display: block;
+}
+
+.c-context-menu__item {
+  border-bottom: 1px solid $border-standard;
+
+  &:last-child {
+    border: none;
+  }
+
+  a,
+  .btn {
+    display: block;
+    width: 100%;
+    padding: .8rem 1rem;
+    font-weight: $font-weight-regular;
+    text-align: left;
+  }
+}
+
+.c-context-menu__drop--auto {
+  a, .btn {
+    white-space: nowrap;
+    padding-right: $space-l;
+  }
+}
+
+.c-context-menu--user-menu {
+  margin-right:$space-base;
+  .btn {
+    padding-right:0;
+  }
+}
+
+// Specific menues
+.c-step-navigation .c-context-menu__drop {
+  max-height:80vh;
+}
+
+.c-sidebar .c-account-selector .c-context-menu__drop {
+  max-height:70vh;
+}

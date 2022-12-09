@@ -1,0 +1,237 @@
+//
+// COMPONENTS / NAVIGATION
+//-----------------------------------------------------------------------
+
+@mixin navbar-border {
+  border-bottom: 1px solid $border-standard;
+  background-color: $white;
+  box-shadow: 1px 1px 2px 0px rgba(black, 0.02);
+}
+
+.c-navbar {
+  z-index: $c-navigation-z;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  height: $c-navigation-height;
+  transition: transform $c-navigation-animation-speed;
+  min-width: $min-width;
+  
+  position:absolute;
+  @include media($from: sm) {
+    position: fixed;
+    @include navbar-border;
+  }
+
+  &--bordered {
+    @include navbar-border;
+  }
+
+  &--fixed {
+    position: fixed;
+    border-bottom: 1px solid $border-standard;
+    background-color: $white;
+    box-shadow: 1px 1px 2px 0px rgba(black, 0.02);
+  }
+
+  &--hidden {
+    transform: translateY(-100%);
+  }
+
+  &--visible {
+    transform: translateY(0);
+  }
+
+  &--transparent {
+    background:transparent;
+  }
+
+  &--open {
+    background: $white;
+  }
+
+  &__step-title {
+    @include media($from: xs, $to: sm) {
+      font-size: $font-size-s;
+    }
+
+    position:relative;
+    width: 100%;
+    margin: 0;
+    white-space:nowrap;
+    &:after {
+      display: block;
+      content: "";
+      height: 100%;
+      background: linear-gradient(270deg, rgb(255, 255, 255) 0%, rgba(255,255,255,0) 100%);
+      width: 40px;
+      right: 0;
+      position: absolute;
+      top: 0;
+    }
+  }
+
+  &--inverted {
+    .c-navbar__section--logo a, .c-nav__item {
+      color: $white;
+    }
+    .c-navbar__section--logo svg {
+      fill: $white;
+    }
+
+    .hamburger-inner,
+    .hamburger-inner::before,
+    .hamburger-inner::after {
+      background-color:$white;
+    }
+
+    .c-context-menu .icon--arrow-expand,
+    .icon--search-inline {
+      fill: $white;
+    }
+
+    .c-notification__toggle {
+      .icon {
+        fill: $white;
+      }
+      span {
+        border: 0 none;
+        width:18px;
+        height:18px;
+        top:2px;
+        right:2px;
+      }
+    }
+  }
+}
+
+.icon--search-inline {
+  height: 18px;
+  width: 18px;
+}
+.btn--mobile-last {
+  padding-right: $hamburger-padding-x;
+}
+.btn--search-toggle {
+  line-height:18px;
+  svg {
+    width:18px;
+  }
+
+  .icon--search-close {
+    display:none;
+  }
+
+  &.is-active {
+    .icon--search-close {display:block;}
+    .icon--search-inline {display:none;}
+  }
+}
+
+.c-navbar__section {
+  display: flex;
+  align-items: center;
+  padding-left: 0.56rem;
+
+  &:last-child {
+    padding-right: 0.56rem;
+  }
+
+  &.c-navbar__section--signup {
+    padding-right: #{0.56rem * 2};
+  }
+}
+
+// It would be good if this could be used for context_menus as well,
+// such as the lesson dropdown in the step navigation
+.c-navbar__section--icon {
+  padding: 0 !important;
+  margin-right: 0.69rem;
+
+  a {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    width: $c-navigation-height;
+  }
+}
+
+@include media($from: xs, $to: sm) {
+  .c-navbar__section--logo {
+    padding-left:0;
+    padding-right:0;
+    flex:1;
+  }
+  .c-navbar__logo {
+    padding-left:0;
+    flex:1;
+    text-align:center;
+  }
+}
+
+.c-navbar__logo {
+  padding-left: 0.56rem;
+  line-height:1;
+  padding-bottom:3px;
+  @include logo;
+
+  svg {
+    fill:$black;
+  }
+
+  > a {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+.c-navbar__section--filler {
+  flex: 1;
+  padding-left: 0.56rem;
+}
+
+// Which direction? Perhaps support both?
+.c-navbar__section--divider {
+  padding-right: 1.25rem;
+  border-right: 1px solid $border-standard;
+}
+
+.c-navbar--inline {
+  position: absolute;
+  border:0 none;
+  box-shadow:none;
+}
+
+.c-mobile-drop {
+  display:none;
+  position:absolute;
+  width:100%;
+  height: calc(100vh - #{$c-navigation-height});
+  left:0;
+  top:$c-navigation-height;
+  overflow-y:auto;
+  background:$white;
+  font-size: $font-size-m;
+
+  &--show {
+    display:block;
+  }
+
+  .c-card {
+    padding: 0 $space-xs;
+    border-radius:0;
+    padding-bottom:150px;
+  }
+  svg {
+    margin-top:3px;
+    float: right;
+  }
+}
+
+@include media($from: xs, $to: sm) {
+  .c-navbar__section--webcam + .c-navbar__section {
+    padding-left:0;
+  }
+}

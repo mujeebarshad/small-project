@@ -1,0 +1,154 @@
+//
+// COMPONENTS / TABLE
+//
+
+.c-table {
+  width: 100%;
+  margin-bottom: $space-l;
+  border-collapse: collapse;
+
+  th, td {
+    padding: 0.5rem;
+    position: relative;
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+
+  &--padded-vertical {
+    th, td {
+      padding-top:$space-s;
+      padding-bottom:$space-s;
+
+      @include media($from: sm) {
+        padding-top:$space-base;
+        padding-bottom:$space-base;
+      }
+    }
+  }
+
+  &--admins {
+    &__name {
+      max-width:0;
+      width:100%;
+      span {
+        position:relative;
+        display:block;
+        white-space:nowrap;
+        overflow:hidden;
+
+        &:after {
+          content: "";
+          display:block;
+          position:absolute;
+          right:0;
+          top:0;
+          height:100%;
+          width:30px;
+          background: linear-gradient(270deg, rgba($white-dark, 1) 0%, rgba($white-dark, 0) 100%); 
+        }
+      }
+    }
+  }
+
+  th {
+    padding: 1rem 0.5rem;
+  }
+
+  .c-table__checkbox-column {
+    width: 42px;
+    position: relative;
+
+    .c-checkbox {
+      position: absolute;
+      top: 50%;
+      margin-top: -(1.4rem/2);
+    }
+  }
+
+  .c-table__avatar-column {
+    width: 42px;
+    padding-right: 0;
+  }
+
+  .c-avatar {
+    max-width: 42px;
+  }
+
+  th {
+    text-align: left;
+    text-transform: uppercase;
+    font-size: $font-size-xs;
+    font-weight: 400;
+    letter-spacing: 0.1rem;
+
+    a {
+      font-weight: 400;
+    }
+  }
+
+  th .sort-link {
+    padding-right: 18px;
+    background-repeat: no-repeat;
+    background-position: right 50%;
+
+    &.asc {
+      background-image: image-url("sort-asc.svg");
+    }
+
+    &.desc {
+      background-image: image-url("sort-desc.svg");
+    }
+  }
+
+  tr + tr {
+    th, td {
+      border-top: 1px solid $border-standard;
+    }
+  }
+
+  thead th {
+    border-bottom: 1px solid $border-standard;
+  }
+
+  &--borderless {
+    th, td {
+      padding-top: #{$space-s / 2};
+      padding-bottom: #{$space-s / 2};
+      border-width:0 !important;
+    }
+  }
+
+  &--loading {
+    position:relative;
+    &:before {
+      position:absolute;
+      background: $white;
+      width:100%;
+      height:100%;
+      content:"";
+      top:0;
+      left:0;
+      z-index:1;
+    }
+    &:after {
+      position:absolute;
+      content:"";
+      background: image_url('inline-loader@2x.gif') center center;
+      background-size: 40px;
+      height:40px;
+      width:40px;
+      display:block;
+      top: 50%;
+      left: 50%;
+      margin-left: -20px;
+      margin-top: -20px;
+      z-index:2;
+    }
+  }
+}

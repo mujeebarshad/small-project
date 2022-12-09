@@ -1,0 +1,51 @@
+//
+// LAYOUT / MAIN
+//-----------------------------------------------------------------------
+
+.l-main {
+  flex: 1;
+  padding: $space-s 0 50px;
+
+  @include media($from: sm) {
+    padding: $space-l 0 100px;
+  }
+
+  @include media($from: xs, $to: sm) {
+    &--with-featured {
+      padding-top:0;
+    }
+  }
+
+  &--padded {
+    @include media($from: sm) {
+      padding-top: $space-xxl;
+    }
+  }
+}
+
+.l-main--step {
+  display: flex;
+  flex-direction: column;
+  padding-top: 0;
+  padding-bottom: 0;
+  background: $white;
+
+  &__progress-bar {
+    position: fixed;
+    top: $c-navigation-height;
+    z-index: $c-navigation-z - 1;
+    left: 0;
+    right: 0;
+
+    transition: top $c-navigation-animation-speed;
+
+    &--top {
+      top: 0px;
+    }
+  }
+}
+
+.l-main--step-quiz {
+  flex-direction: row;
+  align-items: center;
+}

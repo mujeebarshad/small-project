@@ -1,0 +1,30 @@
+<%= component "modal", title: "Update Vessels", content_only: true do |c| %>
+  <% c.body do %>
+    <%= form_for :employment,
+                  url: manage_organization_employees_bulk_vessel_path(@organization),
+                  builder: WrappedFormBuilder,
+                  method: :patch,
+                  remote: true do |f| %>
+      <div class="modal__body">
+        <%= f.select :vessel_id,
+              options_for_select(@organization.vessels.by_name.collect {|v| [ v.name, v.id ] }),
+              { include_blank: "Select a vessel" },
+              data: { cy: "select-vessel" } %>
+      </div>
+      <div class="modal__footer">
+        <%= button_tag "Cancel",
+                       type: :button,
+                       class: "btn--link u-mr u-text-muted",
+                       data: { action: "modal#hide" } %>
+        <%= f.submit "Update",
+          class: "btn btn--primary",
+          data: {
+            cy: "save-employment",
+            disable_with: "Updating"
+          }
+        %>
+      </div>
+      <%= render partial: "manage/employees/bulk/hidden_fields" %>
+    <% end %>
+  <% end %>
+<% end %>

@@ -1,0 +1,452 @@
+//
+// UTILITIES / MISC
+//-----------------------------------------------------------------------
+
+.u-visually-hidden {
+  @include visually-hidden;
+}
+
+.u-img-round {
+  display: inline-block;
+  border-radius: 50%;
+}
+
+.u-handle {
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  * {
+    pointer-events: none;
+  }
+}
+
+.u-offset-navbar {
+  padding-top: $c-navigation-height;
+}
+
+.u-float-right {
+  float: right;
+}
+
+.u-background-white {
+  background: $white;
+}
+
+.turbolinks-progress-bar {
+  background: $blue-standard;
+}
+
+.c-anchor {
+  display: block;
+  position: relative;
+  top: -60px;
+  visibility: hidden;
+}
+
+.u-lesson-description {
+  max-width:600px;
+}
+
+.u-list--success {
+  li {
+    list-style: none;
+    margin-top: $space-xs;
+    padding-left: $space-l;
+    background: image_url('checkbox-check.png') no-repeat left top 5px;
+    background-size:13px;
+  }
+}
+
+.root .l-main {
+  padding-bottom:0;
+}
+
+.c-badge-list {
+  display: flex;
+  flex-wrap:wrap;
+  margin: 0 -#{$space-base / 2};
+  flex-direction:column;
+
+  &__item {
+    flex:1;
+    margin-left: #{$space-base / 2};
+    margin-right: #{$space-base / 2};
+
+    & + & {
+      margin-top: $space-xs;
+    }
+  }
+
+  a {
+    padding:$space-s;
+    border:1px solid $border-standard;
+    background:$white;
+    text-align:center;
+    width:100%;
+    box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, .03);
+    white-space:nowrap;
+    border-radius: 2px;
+    font-size: $font-size-m;
+
+    &:hover {
+      border-color:$component-medium;
+      color:$text-medium;
+    }
+  }
+
+  @include media($from: sm) {
+    flex-direction:row;
+    &__item + &__item {
+      margin-top:0px;
+    }
+  }
+}
+
+.c-brand-list {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content:center;
+  margin-left:-$space-s;
+  margin-right:-$space-s;
+
+  img {
+    align-self:center;
+    width:0;
+    min-width:130px;
+    margin:$space-l $space-s 0;
+  }
+}
+
+.c-business-hero {
+  background-image: url(image_path("for_business/hero-tablet.jpg"));
+  background-position: center;
+  background-size:cover;
+  position:relative;
+  
+  height:550px;
+  @include media($from: sm) {
+    height:680px;
+  }
+  
+  @include media($from: md) {
+    background-image: url(image_path("for_business/hero.jpg"));
+    background-position: left center;
+  }
+
+  &--testimonial {
+    background-position: center top;
+    background-image: url(image_path("training_provider/testimonial-mobile.jpg"));
+    @include media($from: sm) {
+      background-position: center left;
+      background-image: url(image_path("training_provider/testimonial.png"));
+    }
+    @include media($from: md) {
+      background-position: center;
+    }
+
+    .wistia_click_to_play {
+      height:100% !important;
+      width: 100% !important;
+    }
+  }
+
+  &__overlay {
+    position:absolute;
+    left:0;
+    top: 0;
+    height:100%;
+    width:100%;
+    background: rgba(0,0,0,0.25);
+    background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.05) 30%, rgba(0,0,0,0.25) 60%);
+  }
+
+  &__wistia-video {
+    cursor:pointer;
+
+    .wistia_click_to_play {
+      width: auto !important;
+    }
+  }
+}
+
+.c-topic-tags {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+
+  &__tag {
+    & + & {
+      margin-left: $space-xs;
+      margin-bottom: $space-s;
+    }
+  }
+  .btn--topic {
+    font-size:$font-size-s;
+    padding: #{$space-s / 2} #{$space-base};
+  }
+}
+
+.u-round {
+  border-radius:50%;
+}
+
+.c-app-buttons {
+  img {
+    height:41px;
+    width:auto;
+  }
+
+  &__inactive {
+    opacity:.6;
+  }
+}
+
+.c-authors {
+  &__author {
+    margin-bottom: $space-l;
+    display:flex;
+  }
+  .c-avatar {
+    display:block;
+    margin-right:$space-xs;
+  }
+}
+
+.u-business-heading {
+  margin-top:$space-l;
+
+  @include media($from: sm) {
+    margin-top:0;
+  }
+
+  @include media($from: xs, $to: md) {
+    font-size:$font-size-h3;
+    margin-bottom:$space-xs;
+
+    & + p {
+      margin-top: $space-xs;
+    }
+  }
+}
+
+.topics-container {
+  @include media($from: md) {    
+    padding-left:0;
+    padding-right:0;
+  }
+}
+
+.c-person {
+  width: 50%;
+  margin-bottom:$space-xl;
+
+  padding-left:$gutter / 2;
+  padding-right:$gutter / 2;
+
+  @include media($from: sm) {
+    margin-bottom:$space-l;
+    width:33.33333333%;
+  }
+}
+
+.u-number-circle {
+  border-radius:50%;
+  width:50px;
+  height:50px;
+  display:block;
+  border:3px solid $border-standard;
+  line-height:45px;
+  font-weight:$font-weight-medium;
+  text-align:center;
+  margin-bottom:$space-s;
+}
+
+.c-usp-list {
+  display:flex;
+  flex-wrap:wrap;
+  margin-left:-#{$gutter / 2};
+  margin-right:-#{$gutter / 2};
+
+  &__usp {
+    text-align:center;
+    padding-left:#{$gutter / 2};
+    padding-right:#{$gutter / 2};
+    margin-bottom:$space-l;
+    
+    flex: 0 0 100%;
+    @include media($from: sm) {
+      flex: 0 0 33.333333%;
+    }
+
+    h3 {
+      margin-bottom:$space-xxs;
+    }
+    p {
+      margin-top:0;
+    }
+  }
+}
+
+.c-video-thumb {
+  position:relative;
+  box-shadow: 0 2px 20px 3px rgba(0,0,0,0.16);
+  &:after {
+    content:"";
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:200px;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 100%);
+    z-index:1;
+    pointer-events:none;
+  }
+
+  .wistia_click_to_play, img {
+    width:100% !important;
+    height:auto !important;
+  }
+
+  &__caption {
+    max-width:250px;
+    position: absolute;
+    left:20px;
+    bottom:20px;
+    z-index:2;
+  }
+
+  &__image-link {
+    height:0;
+    display:block;
+    width:100%;
+    background-position:center center;
+    background-size:cover;
+
+    &--screencast {
+      background-image: image_url("training_provider/screencast.jpg");
+      padding-bottom:80%;
+      @include media($from: sm) {
+        padding-bottom:60%;
+      }
+    }
+  }
+
+  .btn {
+    transition: transform 0.2s ease-in-out;
+  }
+  &:hover {
+    img {
+      opacity:1;
+    }
+  }
+}
+
+.c-testimonial {
+  margin-bottom:$space-base;
+  @include media($from: xs, $to: sm) {  
+    &:last-of-type {
+      margin-bottom:0;
+    }
+  }
+
+  .c-card {
+    height: 100%;
+  }
+  &__person {
+    margin-top: $space-base;
+    display:flex;
+    flex:1;
+    align-items:flex-end;
+  }
+}
+
+.c-email-settings {
+  display: flex;
+  flex-direction: column;
+
+  @include media($from: sm) {
+    flex-direction: row;
+  }
+
+  & + & {
+    margin-top:$space-base;
+  }
+
+  &__label {
+    @include media($from: sm) {
+      flex:1;
+    }
+  }
+  &__button {
+    margin-top:$space-xs;
+
+    @include media($from: sm) {
+      margin-top:0;
+      margin-left:$space-s;
+    }
+
+  }
+}
+
+.u-course-name {
+  @include media($from: xs, $to: sm) {
+    display:flex;
+    flex-direction:row;
+
+    span {
+      margin-top:1px;
+      margin-left:$space-xs;
+      align-self:flex-start;
+    }
+  }
+}
+
+.c-category {
+  & + & {
+    margin-top:$space-l;
+  }
+}
+
+.u-image-box {
+  border:1px solid $border-standard;
+  border-radius:2px;
+  height:50px;
+  width:50px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  img {
+    display:block;
+  }
+}
+
+.u-admin-back {
+  font-weight: $font-weight-regular;
+  .icon {
+    margin-top:-2px;
+  }
+}
+
+.u-cert-link {
+  position: relative;
+  .icon {
+    position:absolute;
+    top:-8px;
+    right:-8px;
+    z-index:1;
+  }
+}
+
+.u-mirror {
+  transform: scaleX(-1);
+}
+
+.u-lock-scrolling {
+  overflow:hidden !important;
+  margin: 0;
+  min-height:none;
+}

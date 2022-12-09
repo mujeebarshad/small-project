@@ -1,0 +1,91 @@
+//
+// SETUP / MIXINS
+//-----------------------------------------------------------------------
+
+@mixin clearfix {
+  &:after {
+    content:"";
+    display:table;
+    clear:both;
+  }
+}
+
+@mixin placeholder {
+  $placeholders: ":-webkit-input" ":-moz" "-moz" "-ms-input";
+  @each $placeholder in $placeholders {
+    &:#{$placeholder}-placeholder {
+      @content;
+    }
+  }
+}
+
+@mixin visually-hidden {
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding:0 !important;
+  border:0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
+
+  body:hover & {
+    a,
+    input,
+    button {
+      display: none !important;
+    }
+  }
+}
+
+@mixin blue-link {
+  color: $blue-standard;
+  &:hover {
+    color: $hover-blue !important;
+  }
+}
+
+@mixin media($from, $to: "") {
+  @if $to == "" {
+    @media only screen and (min-width: map-get($grid-breakpoints, $from)) {
+     @content
+    }
+  }
+  @else {
+    @media only screen and (min-width: map-get($grid-breakpoints, $from)) and (max-width: map-get($grid-breakpoints, $to) - 0.01) {
+      @content
+    }
+  }
+}
+
+@mixin logo() {
+  font-size: $font-size-logo;
+  font-weight: 600;
+}
+
+@mixin text-resp-s-xs() {
+  font-size: $font-size-s;
+  @include media($from: sm) {
+    font-size: $font-size-xs;
+  }
+}
+
+@mixin text-resp-m-s() {
+  font-size: $font-size-m;
+  @include media($from: sm) {
+    font-size: $font-size-s;
+  }
+}
+
+@mixin heading-resp-h1() {
+  font-size: $font-size-h1--small;
+  @include media($from: sm) {
+    font-size: $font-size-h1;
+  }
+}
+
+@mixin heading-resp-h2() {
+  font-size: $font-size-h1--small;
+  @include media($from: sm) {
+    font-size: $font-size-h2;
+  }
+}

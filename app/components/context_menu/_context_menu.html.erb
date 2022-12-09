@@ -1,0 +1,11 @@
+<%= content_tag :div,
+                class: "c-context-menu #{classes}",
+                id: id,
+                data: data do %>
+  <%= button_tag class: toggle.classes, type: :button, data: toggle.data.merge(action: "context-menu#toggle") do %>
+    <%= toggle %>
+  <% end %>
+  <div class="<%= drop.modifiers %> animated">
+    <%= drop %>
+  </div>
+<% end %>

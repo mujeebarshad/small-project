@@ -1,0 +1,152 @@
+//
+// COMPONENTS / CARD
+//-----------------------------------------------------------------------
+
+.c-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $border-standard;
+  box-shadow: $card-box-shadow;
+  border-radius: 2px;
+  background-color: $white;
+
+  &--warning {
+    background: $yellow-light;
+    border-color: $component-medium;
+    box-shadow: none;
+
+    .c-card__section {
+      border-color: $component-medium;
+    }
+  }
+
+  &--gray {
+    background: $background-light;
+    border-color: $component-light;
+    box-shadow: none;
+  }
+
+  &--with-shadow {
+    box-shadow: $card-box-shadow;
+  }
+}
+
+.c-card--flush {
+  border: none;
+  box-shadow: none;
+  background: none;
+
+  & + & {
+    margin-top: 0;
+    border-top: 1px solid $border-standard;
+  }
+}
+
+.c-card__empty-state {
+  color: $fg-muted-color;
+  text-align:center;
+  margin-top:$space-l;
+  margin-bottom:$space-l;
+}
+
+.c-card--compact {
+  .c-lesson-card__description {
+    line-height: $base-line-height * .9;
+  }
+
+  .c-card__section {
+    padding: $space-s;
+    font-size: $font-size-s;
+  }
+}
+
+
+.c-card--content-padding .c-card__section {  
+  padding: $space-s;
+  padding-right: $space-base;
+  @include media($from: sm) {
+    padding-right: $space-l;
+  }
+}
+
+.c-card__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 1px solid $border-standard;
+  padding: $space-s;
+}
+
+.c-card__header--centered {
+  text-align: center;
+}
+
+.c-card__header--space-between {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.c-card__section {
+  flex: 1;
+  padding: $space-base;
+  border-bottom: 1px solid $border-standard;
+
+  a:not([class*="btn--"]) {
+    display: block;
+    font-weight: 400;
+    text-decoration: none;
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.c-card__section--title {
+  margin-right: .3rem;
+}
+
+.c-card__section--space-between {
+  justify-content: space-between;
+}
+
+.c-card__section--success {
+  background-color: $green-light;
+}
+
+.c-card__section--danger {
+  background-color: $red-light;
+}
+
+.c-card__section--info {
+  background-color: $yellow-light;
+}
+
+.c-card__section--secondary {
+  background-color: $background-light;
+}
+
+.c-card__section--add {
+  color: $gray-icon;
+  font-size: $font-size-s;
+  font-weight: 500;
+  border-bottom:0 none;
+
+  &:hover {
+    cursor: pointer;
+    background: $white;
+  }
+
+  .icon {
+    margin: 0px 20px 0 0;
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.c-card--stripe-logo {
+  background-image: image_url('powered-by-stripe.png');
+  background-size: 95px;
+  background-position: bottom $space-s right $space-s;
+  background-repeat: no-repeat;
+}

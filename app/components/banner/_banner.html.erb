@@ -1,0 +1,12 @@
+<%= content_tag :div,
+                class: "c-banner c-banner--#{type}",
+                data: {
+                  controller: 'toast'
+                } do %>
+  <div class="c-banner__content" data-target="toast.content">
+    <%= message %>
+    <button type="button" class="c-banner__close" data-action="toast#hide" alt="Close">
+      <svg class="icon icon--close"><use xlink:href="#icons-close"></svg>
+    </button>
+  </div>
+<% end %>

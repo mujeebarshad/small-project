@@ -1,0 +1,68 @@
+<%= render layout: "manage/settings/settings_layout" do %>
+  <div class="l-row">
+    <div class="l-col-xs-26 l-col-sm-24">
+
+      <div class="u-display-flex u-align-items-center u-mb-s">
+        <h3 class="u-mb-0 u-flex-1">Vessel Names</h3>
+        <%= link_to "Add Vessel",
+                    new_manage_organization_settings_vessel_path,
+                    remote: true,
+                    class: "btn btn--secondary",
+                    data: {
+                      controller: "modal-remote-trigger",
+                      action: "modal-remote-trigger#show",
+                      "modal-remote-trigger-id": "remote_modal",
+                      cy: "add-vessel"
+                    } %>
+      </div>
+      <% if @vessels.count.positive? %>
+        <table class="c-table c-table--padded-vertical">
+          <thead>
+            <tr>
+              <th style="width:38%;">Name</th>
+              <th>Employees</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @vessels.each do |v| %>
+              <tr data-cy="vessel-<%= v.id %>">
+                <td><%= v.name %></td>
+                <td><%= link_to "View (#{v.employments.count})",
+                                manage_organization_employees_path(@organization, "filter[vessel]": v.id),
+                                class: "u-text-blue",
+                                data: {
+                                  cy: "vessel-#{v.id}-view"
+                                }  %></td>
+                <td class="u-text-right">
+                  <%= link_to icon("pen-simple").html_safe,
+                              edit_manage_organization_settings_vessel_path(@organization, v),
+                              remote: true,
+                              class: "u-mr-s",
+                              data: {
+                                controller: "modal-remote-trigger",
+                                action: "modal-remote-trigger#show",
+                                "modal-remote-trigger-id": "remote_modal",
+                                cy: "vessel-#{v.id}-edit"
+                              } %>
+                  <%= remote_modal_link icon(:trash).html_safe, move_users_to_vessel_modal_manage_organization_settings_vessel_path(@organization, v), classes: "c-nav__item", data: { cy: "vessel-#{v.id}-remove" } %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <div class="c-empty-state u-mt-s">
+          <p data-cy="vessles-empty">No vessles available</p>
+        </div>
+      <% end %>
+
+      <div class="u-display-flex u-align-items-center u-mb-s u-mt-xl">
+        <h3 class="u-mb-0 u-flex-1">Position Names</h3>
+      </div>
+      <div class="c-empty-state u-mt-s">
+        <p data-cy="positions-empty">No positions available</p>
+      </div>
+    </div>
+  </div>
+<% end %>

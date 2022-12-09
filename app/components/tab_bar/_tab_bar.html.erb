@@ -1,0 +1,16 @@
+<%= content_tag :div,
+                class: classes,
+                data: {
+                  controller: "tab-bar",
+                  tab_bar_active: active_tab_index
+                } do %>
+  <%= content_tag :div,
+                  class: "c-tab-bar__wrapper",
+                  data: {
+                    target: "tab-bar.wrapper",
+                  } do %>
+    <% tabs.each do |tab| %>
+      <%= link_to(tab.title, tab.url, class: tab.classes, data: tab.data) %>
+    <% end %>
+  <% end %>
+<% end %>

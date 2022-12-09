@@ -1,0 +1,9 @@
+<%= component "modal", content_only: true do |c| %>
+  <% c.body do %>
+    <div class="modal__body">
+      <h2 class="u-text-center">Log in with Email</h2>
+      <p class="u-text-center">Log in to save your progress and access your bookmarks, certificates and assignments from any device.</p>
+      <%= render partial: "sessions/shared/sign_in_form", locals: { remote: true } %>
+    </div>
+  <% end %>
+<% end %>

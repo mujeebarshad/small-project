@@ -1,0 +1,20 @@
+//
+// COMPONENTS / EMPTY STATE
+//-----------------------------------------------------------------------
+
+.c-empty-state {
+  border:1px solid $border-standard;
+  border-radius:2px;
+  height:300px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  color: $fg-muted-color;
+  text-align:center;
+  padding:$space-base;
+
+  &--compact {
+    padding:$space-s;
+    height:150px;
+  }
+}

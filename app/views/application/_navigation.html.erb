@@ -1,0 +1,25 @@
+<%= content_tag :div, class: "c-navbar", id: 'main-nav', data: { controller: "navbar" } do %>
+  <%= content_tag :div, class: "c-navbar__section c-navbar__section--logo" do %>
+    <span class="c-navbar__logo">
+      <%= link_to current_user ? home_path : root_path do %>
+        <%= "Envisage" %>
+      <% end %>
+    </span>
+  <% end %>
+  <%= content_tag :div, class: "c-navbar__section c-navbar__section--filler" do %>
+    <!-- Spacer needed for layout purposes -->
+    <div></div>
+  <% end %>
+  <%= content_tag :div, class: "c-navbar__section" do %>
+    <div class="c-nav">
+      <% if Pundit.policy(current_user, :show_manage).show? %>
+        <%= link_to "Manage", manage_root_path, class: "c-nav__item", data: { cy: "manage" } %>
+      <% end %>
+      <% if current_user %>
+        <%= link_to "Sign out", session_path, method: :delete, class: "c-nav__item", data: { cy: "sign-out" } %>
+      <% else %>
+        <%= remote_modal_link "Sign in", new_session_path, classes: "c-nav__item", data: {cy: "sign-in"} %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

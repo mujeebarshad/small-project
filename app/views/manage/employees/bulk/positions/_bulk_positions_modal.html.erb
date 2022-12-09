@@ -1,0 +1,31 @@
+<%= component "modal", title: "Update Positions", content_only: true do |c| %>
+  <% c.body do %>
+    <%= form_for :employment,
+                  url: manage_organization_employees_bulk_position_path(@organization),
+                  builder: WrappedFormBuilder,
+                  method: :patch,
+                  remote: true do |f| %>
+      <div class="modal__body">
+        <%= f.select :position_id,
+                options_for_select(@organization.positions.by_name.collect {|p| [ p.name, p.id ] }),
+                { include_blank: "Select a position" },
+                data: { cy: "select-position" }
+                %>
+      </div>
+      <div class="modal__footer">
+        <%= button_tag "Cancel",
+                       type: :button,
+                       class: "btn--link u-mr u-text-muted",
+                       data: { action: "modal#hide" } %>
+        <%= f.submit "Update",
+          class: "btn btn--primary",
+          data: {
+            cy: "save-employment",
+            disable_with: "Updating"
+          }
+        %>
+      </div>
+      <%= render partial: "manage/employees/bulk/hidden_fields" %>
+    <% end %>
+  <% end %>
+<% end %>

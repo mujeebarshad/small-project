@@ -1,0 +1,32 @@
+.c-avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
+
+  &--sm {
+    width: 25px;
+    height: 25px;
+  }
+
+  &--md {
+    width: 42px;
+    height: 42px;
+  }
+
+  &--lg {
+    width: 72px;
+    height: 72px;
+  }
+
+  &--auto {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+  }
+}
+
+.c-avatar img,
+img.c-avatar,
+.c-media-uploader__preview--avatar img {
+  border: 1px solid $component-light;
+}

@@ -1,0 +1,88 @@
+AllCops:
+  Exclude:
+    - "db/schema.rb"
+    - "db/migrate/*"
+    - "node_modules/**/*"
+    - "vendor/**/*"
+    - "Vagrantfile"
+    - "config/initializers/rqrcode.rb"
+
+Layout/EmptyLineAfterGuardClause:
+  Enabled: false
+
+Metrics/AbcSize:
+  Exclude:
+    - "test/**/*"
+
+Metrics/BlockLength:
+  Exclude:
+    - "config/routes.rb"
+    - "config/environments/*"
+    - "spec/**/*.rb"
+
+Metrics/ClassLength:
+  Max: 300
+  Exclude:
+    - "test/**/*"
+    - "spec/swagger_docs/*.rb"
+
+Layout/LineLength:
+  Max: 120
+  Exclude:
+    - "app/factories/**/*.rb"
+    - "db/seeds/**/*.rb"
+    - "spec/swagger_docs/*.rb"
+
+Metrics/MethodLength:
+  Enabled: false
+
+Naming/VariableNumber:
+  EnforcedStyle: snake_case
+
+Style/Documentation:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/MixinUsage:
+  Exclude:
+    - "bin/setup"
+    - "bin/update"
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+
+Lint/RaiseException:
+  Enabled: true
+
+Lint/StructNewOverride:
+  Enabled: true
+
+Lint/ImplicitStringConcatenation:
+  Exclude:
+    - "spec/swagger_docs/*.rb"
+    - "spec/requests/**/*.rb"
+
+Style/ExponentialNotation:
+  Enabled: true
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
+Naming/ClassAndModuleCamelCase:
+  Exclude:
+    - "app/serializers/sync/**/*.rb"
+    - "spec/swagger_docs/*.rb"

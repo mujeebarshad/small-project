@@ -1,0 +1,45 @@
+//
+// BASE / RESET
+//-----------------------------------------------------------------------
+
+* {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: $body-color;
+  font-family: $font-sans-serif;
+  min-height: 100vh;
+  min-width:$min-width;
+}
+
+
+// Global defaults
+// -------------------------
+
+img {
+  max-width: 100%;
+  vertical-align: middle;
+
+  &[width],
+  &[height] {
+    max-width: none;
+  }
+}
+
+ul, ol {
+  list-style: none;
+}
+
+body:not(.u-user-is-tabbing) *:focus {
+  outline: none;
+}

@@ -1,0 +1,18 @@
+.c-nav {
+  display: flex;
+}
+
+.c-nav__item {
+  font-weight: 400;
+  margin: 0.6rem;
+
+  &--primary {
+    font-weight: 500;
+  }
+
+
+  &:hover, &:focus {
+    text-decoration: none;
+    color: $hover-fg;
+  }
+}

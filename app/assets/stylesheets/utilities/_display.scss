@@ -1,0 +1,96 @@
+//
+// UTILITIES / DISPLAY
+//-----------------------------------------------------------------------
+
+.u-display-block {
+  display: block;
+}
+
+.u-display-inline-block {
+  display: inline-block !important;
+}
+
+.u-display-inline {
+  display: inline;
+}
+
+.u-display-flex {
+  display: flex !important;
+}
+
+.u-flex-break {
+  flex-basis: 100%;
+  width: 0;
+}
+
+.u-display-flex-row {
+  flex-direction: row;
+}
+
+.u-display-flex-column {
+  flex-direction: column;
+}
+
+.u-display-none {
+  display: none !important;
+}
+
+.u-visibility-hidden {
+  visibility: hidden;
+}
+
+.u-position-relative {
+  position: relative;
+}
+
+.u-align-items-center {
+  align-items: center;
+}
+
+.u-align-items-start {
+  align-items: flex-start;
+}
+
+.u-align-items-end {
+  align-items: flex-end;
+}
+
+.u-align-self-end {
+  align-self: flex-end;
+}
+
+.u-align-self-start {
+  align-self: flex-start;
+}
+
+.u-align-self-center {
+  align-self: center;
+}
+
+.u-justify-center {
+  justify-content: center;
+}
+
+.u-justify-flex-end {
+  justify-content: flex-end;
+}
+
+.u-justify-space-between {
+  justify-content: space-between;
+}
+
+.u-list-inline li {
+  display:inline-block;
+}
+
+.u-full-width {
+  width: 100%;
+}
+
+.u-flex-1 {
+  flex: 1;
+}
+
+.u-overflow-hidden {
+  overflow: hidden;
+}

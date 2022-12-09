@@ -1,0 +1,24 @@
+<%= form_for @user,
+          as: :session,
+          url: session_path,
+          method: :post,
+          html: { class: "u-mt-s" },
+          builder: WrappedFormBuilder,
+          remote: remote do |f| %>
+  <%= f.text_field :email,
+                   value: @user&.email || params["session"].try(:[], "email"),
+                   placeholder: "E-mail",
+                   data: {
+                     target: "modal.autoFocus",
+                     cy: "email"
+                   } %>
+  <p></p>
+  <div style="position: relative;">
+    <%= f.password_field :password,
+                          placeholder: "Password",
+                          data: {
+                            cy: "password"
+                          } %>
+  </div>
+  <%= f.submit "Log In", class: "btn btn--primary u-display-block u-full-width u-mt u-text-center", "data-cy": "signin" %>
+<% end %>

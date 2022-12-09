@@ -1,0 +1,166 @@
+//
+// SETUP / VARIABLES
+//-----------------------------------------------------------------------
+
+
+// Colors -- Standards
+// -------------------------
+
+$black:                     #2d2d2d;
+$black-dark:                #181818;
+$white-light:               #fff;
+$white-dark:                #fdfdfd;
+$white-semi-dark:           #f1f1f1;
+$white:                     $white-light;
+
+$blue-standard:             #4dabf7;
+$blue-medium:               #7fbcfa;
+$blue-light:                lighten($blue-standard, 40%);
+
+$green-standard:            #41cf72;
+$green-medium:              #7cd89c;
+$green-light:               #e9f9ee;
+
+$red-standard:              #fb4d4d;
+$red-medium:                lighten($red-standard, 10%);
+$red-light:                 #FFE9E9;
+
+$yellow-standard:           #ffc600;
+$yellow-medium:             lighten($yellow-standard, 10%);
+$yellow-light:              #fffde5;
+
+$text-dark:                 $black;
+$text-medium:               #787878;
+$text-light:                #a9a9a9;
+
+$component-dark:            #a1a1a1;
+$component-medium:          #d3d3d3;
+$component-light:           #e2e2e2;
+
+$background-dark:           #eeeeee;
+$background-medium:         #f7f7f7;
+$background-light:          #fafafa;
+
+// Usage-based
+$body-color:                $white-dark;
+$fg-color:                  $black;
+$fg-muted-color:            $text-medium;
+$gray-icon:                 $component-dark;
+$border-standard:           $component-light;
+
+$primary-color:             $blue-standard;
+
+$btn-primary-color:         $blue-standard;
+$btn-primary-hover:         $blue-medium;
+
+$hover-fg:                  lighten($fg-color, 50%);
+$hover-fg-muted:            $hover-fg;
+$hover-blue:                lighten($blue-standard, 20%);
+$hover-red:                 lighten($red-standard, 20%);
+$hover-gray-icon:           lighten($gray-icon, 8%);
+$hover-white:               darken($white, 12%);
+
+$form-border-standard:      $component-light;
+$form-border-active:        $component-medium;
+
+$banner-background:          rgba(0,0,0,0.78);
+
+// Typography
+// -------------------------
+
+$font-sans-serif:           "Roboto", "Helvetica Neue", "Helvetica", sans-serif;
+$font-serif:                "Source Serif Pro", "Georgia", serif;
+$font-weight-regular:       400;
+$font-weight-medium:        500;
+$font-weight-semibold:      600;
+$font-weight-bold:          700;
+
+// Pixel text values
+$px-base-font-size:         14;
+$px-base-line-height:       21;
+
+// Convert to rem
+$base-font-size:            ($px-base-font-size / 16) * 1rem;
+$base-line-height:          ($px-base-line-height / $px-base-font-size);
+
+// Calculate baseline
+$baseline:                  ($base-font-size * $base-line-height);
+
+// Other font sizes
+$font-size-xs:              (12 / 16) * 1rem;
+$font-size-s:               (14 / 16) * 1rem;
+$font-size-m:               (16 / 16) * 1rem;
+$font-size-l:               (18 / 16) * 1rem;
+$font-size-hero:            (40 / 16) * 1rem;
+$font-size-h1:              (32 / 16) * 1rem;
+$font-size-h1--small:       (26 / 16) * 1rem;
+$font-size-h2:              (22 / 16) * 1rem;
+$font-size-h3:              (18 / 16) * 1rem;
+$font-size-h4:              (16 / 16) * 1rem;
+$font-size-button-resp:     (13 / 16) * 1rem;
+
+$font-size-logo:            1.5333rem;
+
+// Spacing
+// -------------------------
+
+// Based on baseline
+$space-base:                $baseline;
+
+$space-xxs:                 $space-base * 0.25;
+$space-xs:                  $space-base * 0.5;
+$space-s:                   $space-base * 0.75;
+$space-l:                   $space-base * 1.5;
+$space-xl:                  $space-base * 2;
+$space-xxl:                 $space-base * 3;
+$space-xxxl:                $space-base * 4.5;
+
+
+// Z-index
+// -------------------------
+
+$c-navigation-z:            1000;
+$c-modal-z:                10001;
+$c-toast-z:       $c-modal-z + 1;
+
+
+// Misc
+// -------------------------
+
+$c-navigation-height:       3.8666rem;
+$c-navigation-animation-speed: 0.25s;
+$card-box-shadow: 0 0 2px 1px rgba(black, 0.04);
+
+
+// Plyr
+// -------------------------
+$plyr-color-main: $white;
+
+// Grid
+$total-columns: 26;
+$min-width: 320px;
+$max-width: 1680px;
+$gutter-xs: $space-s;
+$gutter: 20px;
+$column-prefix: '.l-col';
+$grid-breakpoints: (
+  xs: 0em,
+  sm: 48em,
+  md: 64em,
+  lg: 75em
+);
+
+
+// Hamburgers
+// -------------------------
+
+$hamburger-padding-x           : 15px !default;
+$hamburger-padding-y           : 15px !default;
+$hamburger-layer-width         : 20px !default;
+$hamburger-layer-height        : 2px !default;
+$hamburger-layer-spacing       : 3px !default;
+$hamburger-layer-color         : #000 !default;
+$hamburger-layer-border-radius : 4px !default;
+$hamburger-hover-opacity       : 0.7 !default;
+$hamburger-active-layer-color  : $hamburger-layer-color !default;
+$hamburger-active-hover-opacity: $hamburger-hover-opacity !default;

@@ -1,0 +1,25 @@
+//
+// LAYOUT / LIST
+//-----------------------------------------------------------------------
+
+.l-list {}
+
+.l-list__item {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: flex-start;
+
+  & + & {
+    margin-top: $space-base;
+  }
+}
+
+.l-list__item-section {
+  display: flex;
+}
+
+.l-list__item-section--expand {
+  flex: 1;
+}

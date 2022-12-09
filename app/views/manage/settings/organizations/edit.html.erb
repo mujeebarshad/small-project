@@ -1,0 +1,80 @@
+<%= render layout: "manage/settings/settings_layout" do %>
+  <div class="l-row">
+    <div class="l-col-xs-26 l-col-sm-24 l-col-md-18">
+      <div class="l-row u-mb-l">
+        <div class="l-col-xs-26 l-col-sm-24">
+          <h2 class="u-mb-0 u-h4">Company Profile</h2>
+          <p class="u-mt-xs">Fill in your company profile to showcase your company and your courses. The profile will also be used in notifications when inviting new employess and assigning courses to employees.</p>
+        </div>
+      </div>
+
+      <h3 class="u-label-heading u-mt">Company name</h3>
+      <div class="c-card u-p">
+        <%= form_for @organization,
+                     builder: WrappedFormBuilder,
+                     url: manage_organization_settings_organization_path(@organization) do |f| %>
+      
+          <div class="l-row form-group">
+            <div class="l-col-xs-26 l-col-sm-24">
+              <%= f.text_field :name, placeholder: "Company name", data: {cy: "name"} %>
+            </div>
+          </div>
+
+          <div class="u-text-right form-group">
+            <%= f.submit "Save",
+                         class: "btn btn--primary",
+                         data: { 
+                           cy: "save-name"
+                         } %>
+          </div>
+        <% end %>
+      </div>
+      <h3 class="u-label-heading u-mt-xl">Company contact</h3>
+      <div class="c-card u-p">
+        <%= form_for @organization,
+                     builder: WrappedFormBuilder,
+                     url: manage_organization_settings_organization_path(@organization),
+                     data: { controller: "form-activation", target: "form-activation.form" } do |f| %>
+
+          <div data-controller="radio-select-combo">
+            <div class="u-display-flex u-align-items-center u-mb-s">
+              <div>
+                <%= label_tag "", class: "u-text-normal u-mr-s u-mt-xxs c-control c-control--radio" do %>
+                  <%= radio_button_tag "organization[contact_person]",
+                                    "Admin", true,
+                                    {
+                                      data: {
+                                        target: "radio-select-combo.radioButton"
+                                      }
+                                    } %>
+                    <span class="c-control__indicator"></span>
+                    An admin user:
+                <% end %>
+              </div>
+              <div class="u-flex-1">
+                <%= f.select(:contact_person,
+                            options_for_select(@organization.administrators.collect { |u| [ u.full_name, u.id ] }, f.object.contact_person),
+                              { include_blank: "Select an admin", label: false },
+                              data: { target: "radio-select-combo.select" }
+                            ) %>
+              </div>
+            </div>
+          </div>
+          <div data-controller="radio-select-combo">
+            <%= label_tag "", class: "u-text-normal c-control c-control--radio" do %>
+              <%= radio_button_tag "organization[contact_person]",
+                                  "Organization",
+                                  false,
+                                  data: { target: "radio-select-combo.radioButton" }  %>
+                <span class="c-control__indicator"></span>
+                I'd rather use the company profile.
+            <% end %>
+          </div>
+          <div class="u-text-right form-group">
+            <%= f.submit "Save", class: "btn btn--primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,18 @@
+<div class="c-sidebar c-sidebar--transparent u-xs-hidden">
+  <ul class="c-sidebar-nav">
+    <% if Pundit.policy([@organization, current_user], [:manage, Employment]).index? %>
+      <li class="c-sidebar-nav__item <%= "c-sidebar-nav__item--active" if current_page?(manage_organization_employees_path) %>">
+        <%= link_to manage_organization_employees_path(@organization), class: "c-sidebar-nav__link" do %>
+          <svg class="icon"><use xlink:href="#icons-employees"></svg>
+          Employees
+        <% end %>
+      </li>
+    <% end %>
+    <li class="c-sidebar-nav__item <%= "c-sidebar-nav__item--active" if current_page?(edit_manage_organization_settings_organization_path) %>">
+      <%= link_to edit_manage_organization_settings_organization_path(@organization), class: "c-sidebar-nav__link" do %>
+        <svg class="icon"><use xlink:href="#icons-settings"></svg>
+        Settings
+      <% end %>
+    </li>
+  </ul>
+</div>
